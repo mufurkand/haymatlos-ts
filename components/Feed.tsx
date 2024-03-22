@@ -3,6 +3,7 @@
 import { useState } from "react";
 import CategoryContainer from "./CategoryContainer";
 import { Category } from "@/types/Category";
+import PostContainer from "./PostContainer";
 
 export default function Feed() {
   const [activeCategory, setActiveCategory] = useState<Category>({
@@ -19,12 +20,13 @@ export default function Feed() {
   ];
 
   return (
-    <div className="flex justify-center p-5 bg-foreground dark:bg-darkForeground rounded-lg">
+    <div className="flex justify-center p-5 bg-foreground dark:bg-darkForeground rounded-lg flex-col gap-5 w-1/2">
       <CategoryContainer
         categories={categories}
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
       />
+      <PostContainer activeCategory={activeCategory} />
     </div>
   );
 }
