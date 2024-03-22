@@ -14,7 +14,7 @@ export default function CategoryContainer({
   // TODO: this will be passed as a prop
 
   return (
-    <div className="flex gap-5">
+    <div className="flex gap-5 overflow-y-auto py-3 px-1">
       {categories.map((category) => (
         <CategoryButton
           category={category}
@@ -40,10 +40,11 @@ function CategoryButton({
 }: CategoryButtonProps) {
   return (
     <button
+      type="button"
       className={
-        "p-2 transition-color rounded-lg" +
+        "p-2 transition-color duration-200 rounded-lg" +
         (activeCategory.id === category.id
-          ? " bg-accentRed"
+          ? " bg-accentRed text-darkText"
           : " ring-2 ring-accentRed")
       }
       onClick={() => setActiveCategory(category)}
