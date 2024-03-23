@@ -2,6 +2,7 @@ import { Category } from "@/types/Category";
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { ThumbsUp, ThumbsDown, MessageSquareText } from "lucide-react";
 
 export default function PostContainer({
   activeCategory,
@@ -48,6 +49,7 @@ type PostContainerProps = {
 export function Post({
   id,
   uid,
+  //TODO: user name
   title,
   content,
   category,
@@ -62,15 +64,15 @@ export function Post({
       <p>{title}</p>
       <p>{content}</p>
       <div className="flex justify-between text-gray-500">
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
+          <ThumbsUp size={14} />
           <p>{likes}</p>
+          <ThumbsDown size={14} />
           <p>{dislikes}</p>
+          <MessageSquareText size={14} />
           <p>{comments}</p>
         </div>
-        <div className="flex gap-2">
-          <p>{dayjs().to(createdAt)}</p>
-          <p>{dayjs().to(updatedAt)}</p>
-        </div>
+        <p>{dayjs().to(createdAt)}</p>
       </div>
     </div>
   );

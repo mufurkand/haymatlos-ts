@@ -11,10 +11,8 @@ export default function CategoryContainer({
   activeCategory,
   setActiveCategory,
 }: CategoryContainerProps) {
-  // TODO: this will be passed as a prop
-
   return (
-    <div className="flex gap-5 overflow-y-auto py-3 px-1">
+    <div className="flex justify-center gap-5 overflow-y-auto py-3 px-1">
       {categories.map((category) => (
         <CategoryButton
           category={category}
