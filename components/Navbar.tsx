@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Dropdown from "./Dropdown";
+import Dropdown from "@/components/Dropdown";
 
 export default function Navbar() {
   return (
