@@ -53,8 +53,8 @@ export default function Dropdown() {
 function DropdownMenu() {
   return (
     <div className="bg-accentRed absolute w-full flex flex-col gap-2 p-2 rounded-b-lg text-center">
-      <Link href="/sign-in">Kayıt ol</Link>
-      <Link href="/sign-up">Giriş yap</Link>
+      <Link href="/sign-up">Kayıt ol</Link>
+      <Link href="/sign-in">Giriş yap</Link>
     </div>
   );
 }
