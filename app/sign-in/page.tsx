@@ -2,7 +2,7 @@ import PageContainer from "@/components/PageContainer";
 import Button from "@/components/utils/Button";
 import Input from "@/components/utils/Input";
 
-export default function SignUp() {
+export default function SignIn() {
   return (
     <PageContainer>
       <form className="flex gap-5 flex-col items-center bg-foreground dark:bg-darkForeground p-5 rounded-lg">
@@ -21,7 +21,7 @@ export default function SignUp() {
             type="password"
             id="password"
             name="password"
-            autocomplete="new-password"
+            autocomplete="current-password"
           />
         </div>
         <Button type="submit">Kaydol</Button>
