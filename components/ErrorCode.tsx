@@ -6,7 +6,7 @@ const ErrorCode = ({ code, message }: { code: string; message: string }) => {
         {code}
       </span>
       <div className="h-5 border-l-2 border-text dark:border-darkText"></div>
-      <span className="text-text dark:text-darkText">{message}</span>
+      <span>{message}</span>
     </div>
   );
 };

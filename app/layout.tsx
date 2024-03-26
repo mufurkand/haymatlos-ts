@@ -20,7 +20,7 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          "bg-background dark:bg-darkBackground text-text dark:text-darkText pt-14"
+          " bg-background dark:bg-darkBackground text-text dark:text-darkText pt-14"
         }
       >
         <Navbar />

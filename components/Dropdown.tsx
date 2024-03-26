@@ -40,6 +40,7 @@ export default function Dropdown() {
           "bg-accentRed p-2 flex justify-between gap-2" +
           (isOpen ? " rounded-t-lg" : " rounded-lg")
         }
+        type="button"
       >
         <CircleUserRound size={24} />
         <p className="text-white">Profil</p>

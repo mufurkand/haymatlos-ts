@@ -1,1 +1,2 @@
-export type Category = { id: string; name: string };
+type Category = { id: string; name: string };
+export default Category;

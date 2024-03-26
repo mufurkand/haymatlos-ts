@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import CategoryContainer from "./CategoryContainer";
-import { Category } from "@/types/Category";
+import Category from "@/types/Category";
 import PostContainer from "./PostContainer";
 
 export default function Feed() {
