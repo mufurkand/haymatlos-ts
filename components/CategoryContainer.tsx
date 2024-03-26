@@ -1,4 +1,4 @@
-import Category from "@/types/Category";
+import type Category from "@/types/Category";
 
 type CategoryContainerProps = {
   categories: Category[];

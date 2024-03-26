@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import CategoryContainer from "./CategoryContainer";
-import Category from "@/types/Category";
-import PostContainer from "./PostContainer";
+import CategoryContainer from "@/components/CategoryContainer";
+import type Category from "@/types/Category";
+import PostContainer from "@/components/PostContainer";
 
 export default function Feed() {
   const [activeCategory, setActiveCategory] = useState<Category>({

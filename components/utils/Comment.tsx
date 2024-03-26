@@ -1,4 +1,4 @@
-import Comment from "@/types/Comment";
+import type Comment from "@/types/Comment";
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
 import relativeTime from "dayjs/plugin/relativeTime";

@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import Category from "@/types/Category";
+import type Category from "@/types/Category";
 
 type Post = {
   id: string;
