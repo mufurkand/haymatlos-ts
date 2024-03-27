@@ -20,12 +20,15 @@ export default function Feed() {
   ];
 
   return (
-    <div className="flex justify-center p-5 bg-foreground dark:bg-darkForeground rounded-lg flex-col gap-5">
-      <CategoryContainer
-        categories={categories}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-      />
+    <div className="flex p-5 bg-foreground dark:bg-darkForeground rounded-lg flex-col gap-5">
+      {/* if I center the parent div instead of this spaghetti, the posts overlow */}
+      <div className="flex justify-center">
+        <CategoryContainer
+          categories={categories}
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+        />
+      </div>
       <PostContainer activeCategory={activeCategory} />
     </div>
   );

@@ -46,16 +46,30 @@ export default function Dropdown() {
         <p className="text-white">Profil</p>
         {isOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
       </button>
-      {isOpen && <DropdownMenu />}
+      {isOpen && <DropdownMenu setIsOpen={setIsOpen} />}
     </div>
   );
 }
 
-function DropdownMenu() {
+function DropdownMenu({
+  setIsOpen,
+}: {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const handleClick = () => {
+    setIsOpen(false);
+  };
   return (
     <div className="bg-accentRed absolute w-full flex flex-col gap-2 p-2 rounded-b-lg text-center">
-      <Link href="/sign-up">Kayıt ol</Link>
-      <Link href="/sign-in">Giriş yap</Link>
+      <Link onClick={handleClick} href="/sign-up">
+        Kayıt ol
+      </Link>
+      <Link onClick={handleClick} href="/sign-in">
+        Giriş yap
+      </Link>
+      <Link onClick={handleClick} href="/profile">
+        Profil
+      </Link>
     </div>
   );
 }

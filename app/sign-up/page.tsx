@@ -13,6 +13,7 @@ export default function SignUp() {
             id="username"
             name="username"
             autocomplete="username"
+            placeholder="Kullanıcı adınızı girin..."
           />
         </div>
         <div className="flex flex-col lg:w-1/2 gap-2">
@@ -22,6 +23,7 @@ export default function SignUp() {
             id="password"
             name="password"
             autocomplete="new-password"
+            placeholder="Şifrenizi girin..."
           />
         </div>
         <Button type="submit">Kaydol</Button>

@@ -12,7 +12,7 @@ export default function CategoryContainer({
   setActiveCategory,
 }: CategoryContainerProps) {
   return (
-    <div className="flex sm:justify-center gap-5 overflow-y-auto py-3 px-1">
+    <div className="flex gap-5 overflow-y-auto py-3 px-1">
       {categories.map((category) => (
         <CategoryButton
           category={category}

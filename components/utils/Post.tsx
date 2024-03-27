@@ -20,7 +20,7 @@ export default function Post({
   dayjs.locale("tr");
   dayjs.extend(relativeTime);
   return (
-    <div className="flex flex-col p-5 rounded-lg bg-background dark:bg-darkBackground gap-2">
+    <div className="flex flex-col p-2 rounded-lg bg-background dark:bg-darkBackground gap-2">
       <p className="line-clamp-2 break-words">{title}</p>
       <p className="line-clamp-5 break-words">{content}</p>
       <div className="flex justify-between text-gray-500">
