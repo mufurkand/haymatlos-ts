@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -8,12 +10,19 @@ import type Post from "@/types/Post";
 import Textarea from "@/components/utils/Textarea";
 import Button from "@/components/utils/Button";
 import Comment from "@/components/utils/Comment";
+import Input from "@/components/utils/Input";
+import CategoryContainer from "@/components/CategoryContainer";
+import type Category from "@/types/Category";
 
 export default function PostPage({
   params: { postId },
 }: {
   params: { postId: string };
 }) {
+  const [isInEditMode, setIsInEditMode] = useState(false);
+
+  if (isInEditMode) return <PostEdit setIsInEditMode={setIsInEditMode} />;
+
   return (
     <PageContainer>
       <div className="flex gap-5 flex-col">
@@ -29,6 +38,7 @@ export default function PostPage({
           likes={5}
           dislikes={1}
           comments={3}
+          setIsInEditMode={setIsInEditMode}
         />
         <form className="flex flex-col gap-2 bg-foreground dark:bg-darkForeground p-5 rounded-lg">
           <label htmlFor="comment">Yorumlar</label>
@@ -73,13 +83,17 @@ function Post({
   likes,
   dislikes,
   comments,
-}: Post) {
+  setIsInEditMode,
+}: Post & { setIsInEditMode: React.Dispatch<React.SetStateAction<boolean>> }) {
   dayjs.locale("tr");
   dayjs.extend(relativeTime);
   return (
     <div className="flex flex-col p-5 rounded-lg bg-foreground dark:bg-darkForeground gap-2">
       <p className="break-words">{title}</p>
       <p className="break-words">{content}</p>
+      <div className="flex justify-end text-gray-500 underline">
+        <button onClick={() => setIsInEditMode(true)}>Düzenle</button>
+      </div>
       <div className="flex justify-between text-gray-500">
         <div className="flex gap-2 items-center">
           <ThumbsUp size={14} />
@@ -92,5 +106,72 @@ function Post({
         <p>{dayjs().to(createdAt)}</p>
       </div>
     </div>
+  );
+}
+
+function PostEdit({
+  setIsInEditMode,
+}: {
+  setIsInEditMode: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const [activeCategory, setActiveCategory] = useState<Category>({
+    id: "culture",
+    name: "Kültür/Sanat",
+  });
+
+  const categories: Category[] = [
+    { id: "culture", name: "Kültür/Sanat" },
+    { id: "science", name: "Bilim" },
+    { id: "philosophy", name: "Felsefe" },
+    { id: "politics", name: "Siyaset" },
+  ];
+  return (
+    <PageContainer>
+      <form className="rounded-lg bg-foreground dark:bg-darkForeground p-5 gap-5 flex flex-col items-center">
+        <div className="flex flex-col lg:w-1/2 gap-2">
+          <label>Başlık</label>
+          <Input
+            type="text"
+            id="title"
+            name="title"
+            autocomplete="off"
+            placeholder="Gönderi başlığını girin..."
+          />
+        </div>
+        <div className="flex flex-col lg:w-1/2 gap-2">
+          <label>İçerik</label>
+          <Textarea
+            id="content"
+            name="content"
+            placeholder="Gönderi içeriğini girin..."
+          ></Textarea>
+        </div>
+        <div className="flex flex-col lg:w-1/2 gap-2">
+          <label>Resim Linki</label>
+          <Input
+            type="text"
+            id="image"
+            name="image"
+            autocomplete="off"
+            placeholder="Resmin linkini girin..."
+          />
+        </div>
+        {/* somehow categorycontainer's overflow-y-auto is not working here */}
+        <div className="flex flex-col lg:w-1/2 gap-2">
+          <label>Kategori</label>
+          <CategoryContainer
+            categories={categories}
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
+        </div>
+        <div className="flex gap-5">
+          <Button type="submit">Güncelle</Button>
+          <Button type="button" onClick={() => setIsInEditMode(false)}>
+            Vazgeç
+          </Button>
+        </div>
+      </form>
+    </PageContainer>
   );
 }
